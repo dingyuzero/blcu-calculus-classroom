@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="北语心理学院高数课程资源系统：函数绘图、极限、导数、定积分、泰勒展开和心理学应用的交互课堂。"
+    />
+    <meta name="theme-color" content="#6c56c5" />
+    <title>北语心理学院 · 高数课程资源系统</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="vendor/jsxgraph.css" />
+    <link rel="stylesheet" href="vendor/katex.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="vendor/math.js"></script>
+    <script defer src="vendor/jsxgraphcore.js"></script>
+    <script defer src="vendor/katex.min.js"></script>
+    <script defer src="math-core.js"></script>
+    <script defer src="math-extra.js"></script>
+    <script defer src="plot-engine.js"></script>
+    <script defer src="extra-labs.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到主要内容</a>
+    <aside class="sidebar" id="sidebar">
+      <a href="#home" class="brand"
+        ><span class="brandmark">∫</span
+        ><span
+          ><strong>北语心理学院</strong><small>高数课程资源系统</small></span
+        ></a
+      >
+      <div class="nav-label">课程工作台 <span>WORKSPACE</span></div>
+      <nav aria-label="课程导航">
+        <a href="#home" data-nav="home"><i>⌂</i>课程总览</a>
+        <div class="nav-label sub">交互实验室</div>
+        <a href="#function" data-nav="function"
+          ><i>ƒ</i>函数与图像<span class="nav-num">01</span></a
+        >
+        <a href="#limit" data-nav="limit"
+          ><i>→</i>极限与连续<span class="nav-num">02</span></a
+        >
+        <a href="#derivative" data-nav="derivative"
+          ><i>′</i>导数与变化率<span class="nav-num">03</span></a
+        >
+        <a href="#integral" data-nav="integral"
+          ><i>∫</i>积分与累积<span class="nav-num">04</span></a
+        >
+        <a href="#taylor" data-nav="taylor"
+          ><i>Σ</i>泰勒展开<span class="nav-num">05</span></a
+        >
+        <a href="#psych" data-nav="psych"
+          ><i>ψ</i>数学与心理学<span class="nav-num">06</span></a
+        >
+        <div class="nav-separator"></div>
+        <a href="#resources" data-nav="resources"
+          ><i>◇</i>开源资源库<span class="count">7</span></a
+        >
+        <a href="#guide" data-nav="guide"><i>▤</i>课堂使用指南</a>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="status-dot"></span>为直观理解而设计<small
+          >观察 · 提问 · 验证</small
+        >
+        <p>课程展示版 · 非学校官方平台</p>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="crumb">
+          <button id="menu" class="icon-btn mobile-menu" aria-label="展开导航">
+            ☰</button
+          ><span>高等数学</span><b>/</b
+          ><strong id="breadcrumb">课程总览</strong>
+        </div>
+        <div class="top-actions">
+          <span class="semester">MATHEMATICS × PSYCHOLOGY</span
+          ><button id="present" class="button small">
+            ⛶ <span>课堂演示</span>
+          </button>
+        </div>
+      </header>
+      <main id="main" tabindex="-1"></main>
+      <footer class="footer">
+        <span>北语心理学院 · 高数课程资源系统</span
+        ><span
+          >让公式可见，让理解发生。<a href="#resources">开源致谢 ↗</a></span
+        >
+      </footer>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><div class="noscript">请启用 JavaScript 以使用交互图形。</div></noscript
+    >
+  </body>
+</html>

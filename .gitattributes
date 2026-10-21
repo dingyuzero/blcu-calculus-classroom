@@ -1,0 +1,4 @@
+* text=auto eol=lf
+/dist/vendor/** -text
+*.png binary
+*.zip binary

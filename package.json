@@ -1,0 +1,18 @@
+{
+  "name": "blcu-psych-calculus",
+  "version": "2.0.0",
+  "private": true,
+  "description": "北语心理学院高数课程资源系统",
+  "scripts": {
+    "check:assets": "node scripts/check-assets.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "vendor": "node scripts/vendor.cjs",
+    "build:portable": "node scripts/build-portable.cjs"
+  },
+  "dependencies": {
+    "jsxgraph": "1.14.0",
+    "katex": "0.19.0",
+    "mathjs": "15.2.0"
+  },
+  "license": "MIT"
+}

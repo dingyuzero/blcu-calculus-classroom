@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, ".."),
 const out = path.resolve(
   process.argv[2] || path.join(root, "release", "高数课堂-单文件.html"),
 );
-const read = (p) => fs.readFileSync(path.join(dist, p), "utf8");
+const read = (p) => fs.readFileSync(path.join(dist, p.split(/[?#]/)[0]), "utf8");
 const mime = (p) =>
   ({
     ".woff2": "font/woff2",

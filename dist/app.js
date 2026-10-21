@@ -725,7 +725,7 @@ function exportSVG() {
   writeLine($("#formula-note").textContent, 11);
   writeLine($("#plot-caption").textContent, 11);
   writeLine(
-    "北语心理学院高数课程 · 课堂展示版 · JSXGraph / math.js",
+    "北京语言大学 Ding Lab · 高数课程 · 课堂展示版 · JSXGraph / math.js",
     10,
     "#666677",
   );
@@ -1510,7 +1510,7 @@ function guide() {
       "A CLASSROOM BUILT FOR CURIOSITY",
       "先预测，再操作，最后用数学语言解释。",
     ) +
-    `<div class="guide-grid"><article><span class="guide-number">01 /</span><h2>一条 25 分钟的课堂路线</h2><ol><li><strong>5 分钟 · 看图提问。</strong>输入 1-exp(-0.5*x)，设置 x∈[0,10]，让学生预测进步速度。</li><li><strong>8 分钟 · 建立导数直觉。</strong>切换「导数与变化率」，缩小 h，比较平均与瞬时变化率。</li><li><strong>7 分钟 · 回到心理学。</strong>在学习曲线中改变 k、t，讨论「仍在进步」和「进步加速」。</li><li><strong>5 分钟 · 学生解释。</strong>要求用函数值、斜率和导数三个词说明观察。</li></ol><a class="button primary" href="#function">从函数图像开始 ↗</a></article><article><span class="guide-number">02 /</span><h2>适合投影的展示方式</h2><p>右上角「课堂演示」会隐藏侧栏与补充说明，放大图形和主要数值；再次点击或按 Esc 退出。需要充满屏幕时，可使用浏览器全屏功能。</p><p>实验右上角可复位视图或导出 SVG，方便插入课件。「重置实验」恢复当前主题的默认参数。参数自动保存在本机浏览器；每张图下方可展开数值表并导出 CSV。「自动演示」可以暂停和继续，手动调整参数会结束当前演示序列。切到其他浏览器页签时会暂停。</p><button class="button" id="guide-present">进入课堂演示</button></article><article><span class="guide-number">03 /</span><h2>三组值得停下来的问题</h2><ol><li><strong>极限：</strong>函数在某点没有定义，为什么还能谈论极限？用 sin(x)/x 演示。</li><li><strong>积分：</strong>定积分为 0，几何面积也一定为 0 吗？用 f(x)=x 在 [−2,2] 上演示。</li><li><strong>泰勒：</strong>提高阶数一定处处更好吗？用 ln(1+x) 比较收敛半径内外。</li></ol><a class="button" href="#taylor">打开泰勒展开 ↗</a></article><article><span class="guide-number">04 /</span><h2>使用前了解这些边界</h2><p>函数输入使用弧度制。常用对数写 log10(x)，以 2 为底写 log2(x)，自然对数写 ln(x)；log(x) 也表示自然对数。支持实数单变量表达式，不支持隐函数、复数或分段脚本。有限采样可能遗漏狭窄峰值和快速振荡，不能凭图像证明连续、可导或收敛。</p><p>离线版已内嵌图形、数学库和公式字体，单个 HTML 文件即可拷贝到其他电脑打开；也可解压多文件版后打开 index.html。外部资源链接需要联网。网站不收集学生姓名、成绩或心理测量数据。心理学案例是教学示意，未用真实数据拟合。</p><a class="button" href="#resources">查看开源来源 ↗</a></article></div><p class="source-note">以「北语心理学院高数课程」为使用情境制作的课堂展示版；并非学校官方发布平台。具体教学顺序可按任课教师大纲调整。</p>`;
+    `<div class="guide-grid"><article><span class="guide-number">01 /</span><h2>一条 25 分钟的课堂路线</h2><ol><li><strong>5 分钟 · 看图提问。</strong>输入 1-exp(-0.5*x)，设置 x∈[0,10]，让学生预测进步速度。</li><li><strong>8 分钟 · 建立导数直觉。</strong>切换「导数与变化率」，缩小 h，比较平均与瞬时变化率。</li><li><strong>7 分钟 · 回到心理学。</strong>在学习曲线中改变 k、t，讨论「仍在进步」和「进步加速」。</li><li><strong>5 分钟 · 学生解释。</strong>要求用函数值、斜率和导数三个词说明观察。</li></ol><a class="button primary" href="#function">从函数图像开始 ↗</a></article><article><span class="guide-number">02 /</span><h2>适合投影的展示方式</h2><p>右上角「课堂演示」会隐藏侧栏与补充说明，放大图形和主要数值；再次点击或按 Esc 退出。需要充满屏幕时，可使用浏览器全屏功能。</p><p>实验右上角可复位视图或导出 SVG，方便插入课件。「重置实验」恢复当前主题的默认参数。参数自动保存在本机浏览器；每张图下方可展开数值表并导出 CSV。「自动演示」可以暂停和继续，手动调整参数会结束当前演示序列。切到其他浏览器页签时会暂停。</p><button class="button" id="guide-present">进入课堂演示</button></article><article><span class="guide-number">03 /</span><h2>三组值得停下来的问题</h2><ol><li><strong>极限：</strong>函数在某点没有定义，为什么还能谈论极限？用 sin(x)/x 演示。</li><li><strong>积分：</strong>定积分为 0，几何面积也一定为 0 吗？用 f(x)=x 在 [−2,2] 上演示。</li><li><strong>泰勒：</strong>提高阶数一定处处更好吗？用 ln(1+x) 比较收敛半径内外。</li></ol><a class="button" href="#taylor">打开泰勒展开 ↗</a></article><article><span class="guide-number">04 /</span><h2>使用前了解这些边界</h2><p>函数输入使用弧度制。常用对数写 log10(x)，以 2 为底写 log2(x)，自然对数写 ln(x)；log(x) 也表示自然对数。支持实数单变量表达式，不支持隐函数、复数或分段脚本。有限采样可能遗漏狭窄峰值和快速振荡，不能凭图像证明连续、可导或收敛。</p><p>离线版已内嵌图形、数学库和公式字体，单个 HTML 文件即可拷贝到其他电脑打开；也可解压多文件版后打开 index.html。外部资源链接需要联网。网站不收集学生姓名、成绩或心理测量数据。心理学案例是教学示意，未用真实数据拟合。</p><a class="button" href="#resources">查看开源来源 ↗</a></article></div><p class="source-note">Ding Lab 的高等数学课堂演示资源；并非学校官方发布平台。具体教学顺序可按任课教师大纲调整。</p>`;
   $("#guide-present").onclick = () => {
     location.hash = "derivative";
     setPresentation(true);
@@ -1597,7 +1597,7 @@ function guide() {
   const downloads = document.createElement("section");
   downloads.className = "document-downloads";
   downloads.innerHTML =
-    '<div><h2>把说明带到课堂</h2><p>版本 2.0.0 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
+    '<div><h2>把说明带到课堂</h2><p>版本 2.0.1 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
   $("#main").append(downloads);
   $$("[data-example]").forEach((button) => {
     button.onclick = () => {
@@ -1649,7 +1649,7 @@ function route(reset = false) {
       current
     ];
   closeMenu();
-  document.title = `${$("#breadcrumb").textContent} · 北语心理学院高数课程`;
+  document.title = `${$("#breadcrumb").textContent} · 北京语言大学 Ding Lab · 高数课程`;
   const renderer =
     currentModule !== "main"
       ? chapterModules[current].find((m) => m.id === currentModule).render

@@ -1829,3 +1829,8 @@ input[type="range"] {
 .chapter-tabs a:focus-visible {outline:2px solid #7454bd;outline-offset:1px;}
 .control-panel .button:disabled {opacity:.45;cursor:default;}
 @media(max-width:600px){.chapter-tabs{gap:4px}.chapter-tabs a{flex:1 1 100%;padding:10px 12px}.metric-value{overflow-wrap:anywhere}.paired-fields{min-width:0}.field input,.field select{max-width:100%;min-width:0}}
+
+/* Keep the university and personal lab name legible in the narrow sidebar. */
+.brand-lab { display:block; font-size:16px; line-height:1.45; letter-spacing:.8px; }
+.brandmark { flex-shrink:0; }
+.brand strong { line-height:1.4; }

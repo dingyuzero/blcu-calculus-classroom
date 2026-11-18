@@ -1,0 +1,358 @@
+{
+  "version": "2.1.0",
+  "date": "2026-11-18",
+  "unitCircle": [
+    {
+      "invalid": false,
+      "k": "sin",
+      "value": "sin θ = 1"
+    },
+    {
+      "invalid": false,
+      "k": "cos",
+      "value": "cos θ = 0"
+    },
+    {
+      "invalid": false,
+      "k": "tan",
+      "value": "tan θ = 未定义"
+    },
+    {
+      "invalid": false,
+      "k": "cot",
+      "value": "cot θ = 0"
+    },
+    {
+      "invalid": false,
+      "k": "sec",
+      "value": "sec θ = 未定义"
+    },
+    {
+      "invalid": false,
+      "k": "csc",
+      "value": "csc θ = 1"
+    }
+  ],
+  "inverses": [
+    {
+      "angle": "30",
+      "invalid": false,
+      "k": "sin",
+      "result": "arcsin(0.5) = 0.5236"
+    },
+    {
+      "angle": "30",
+      "invalid": false,
+      "k": "cos",
+      "result": "arccos(0.866) = 0.5236"
+    },
+    {
+      "angle": "30",
+      "invalid": false,
+      "k": "tan",
+      "result": "arctan(0.5774) = 0.5236"
+    },
+    {
+      "angle": "30",
+      "invalid": false,
+      "k": "cot",
+      "result": "arccot(1.7321) = 0.5236"
+    },
+    {
+      "angle": "30",
+      "invalid": false,
+      "k": "sec",
+      "result": "arcsec(1.1547) = 0.5236"
+    },
+    "arcsec(-1.4142) = 2.3562",
+    {
+      "angle": "45",
+      "invalid": false,
+      "k": "csc",
+      "result": "arccsc(1.4142) = 0.7854"
+    },
+    "arccsc(-2) = -0.5236"
+  ],
+  "derivatives": [
+    {
+      "family": "forward",
+      "formula": "d(sin x)/dx = cos x",
+      "invalid": false,
+      "k": "sin",
+      "value": "斜率 = 0.8776"
+    },
+    {
+      "family": "forward",
+      "formula": "d(cos x)/dx = −sin x",
+      "invalid": false,
+      "k": "cos",
+      "value": "斜率 = -0.4794"
+    },
+    {
+      "family": "forward",
+      "formula": "d(tan x)/dx = sec² x",
+      "invalid": false,
+      "k": "tan",
+      "value": "斜率 = 1.2984"
+    },
+    {
+      "family": "forward",
+      "formula": "d(cot x)/dx = −csc² x",
+      "invalid": false,
+      "k": "cot",
+      "value": "斜率 = -4.3507"
+    },
+    {
+      "family": "forward",
+      "formula": "d(sec x)/dx = sec x · tan x",
+      "invalid": false,
+      "k": "sec",
+      "value": "斜率 = 0.6225"
+    },
+    {
+      "family": "forward",
+      "formula": "d(csc x)/dx = −csc x · cot x",
+      "invalid": false,
+      "k": "csc",
+      "value": "斜率 = -3.8181"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arcsin x)/dx = 1 / √(1−x²)",
+      "invalid": false,
+      "k": "sin",
+      "value": "此处为竖直切线"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arccos x)/dx = −1 / √(1−x²)",
+      "invalid": false,
+      "k": "cos",
+      "value": "此处为竖直切线"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arctan x)/dx = 1 / (1+x²)",
+      "invalid": false,
+      "k": "tan",
+      "value": "斜率 = 0.5"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arccot x)/dx = −1 / (1+x²)",
+      "invalid": false,
+      "k": "cot",
+      "value": "斜率 = -0.5"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arcsec x)/dx = 1 / (|x|√(x²−1))",
+      "invalid": false,
+      "k": "sec",
+      "value": "此处为竖直切线"
+    },
+    {
+      "family": "inverse",
+      "formula": "d(arccsc x)/dx = −1 / (|x|√(x²−1))",
+      "invalid": false,
+      "k": "csc",
+      "value": "此处为竖直切线"
+    }
+  ],
+  "existingRoutes": [
+    {
+      "error": "",
+      "paths": 9,
+      "route": "#function",
+      "svg": true,
+      "title": "自由函数绘图"
+    },
+    {
+      "error": "",
+      "paths": 10,
+      "route": "#function/transform",
+      "svg": true,
+      "title": "平移与伸缩"
+    },
+    {
+      "error": "",
+      "paths": 12,
+      "route": "#function/inverse",
+      "svg": true,
+      "title": "反函数与定义域"
+    },
+    {
+      "error": "",
+      "paths": 9,
+      "route": "#limit",
+      "svg": true,
+      "title": "左右逼近与连续"
+    },
+    {
+      "error": "",
+      "paths": 13,
+      "route": "#limit/epsilon",
+      "svg": true,
+      "title": "ε–δ 邻域挑战"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#limit/sequence",
+      "svg": true,
+      "title": "数列的收敛"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#derivative",
+      "svg": true,
+      "title": "割线与切线"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#derivative/graph",
+      "svg": true,
+      "title": "导函数与单调性"
+    },
+    {
+      "error": "",
+      "paths": 15,
+      "route": "#derivative/newton",
+      "svg": true,
+      "title": "牛顿迭代求根"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#integral",
+      "svg": true,
+      "title": "黎曼和与面积"
+    },
+    {
+      "error": "",
+      "paths": 12,
+      "route": "#integral/accumulation",
+      "svg": true,
+      "title": "变上限积分"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#integral/quadrature",
+      "svg": true,
+      "title": "三种数值积分"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#taylor",
+      "svg": true,
+      "title": "多项式逐阶逼近"
+    },
+    {
+      "error": "",
+      "paths": 11,
+      "route": "#taylor/error",
+      "svg": true,
+      "title": "误差与余项界"
+    },
+    {
+      "error": "",
+      "paths": 9,
+      "route": "#taylor/geometric",
+      "svg": true,
+      "title": "几何级数与收敛"
+    },
+    {
+      "error": "",
+      "paths": 10,
+      "route": "#psych",
+      "svg": true,
+      "title": "学习曲线与正态分布"
+    },
+    {
+      "error": "",
+      "paths": 10,
+      "route": "#psych/forgetting",
+      "svg": true,
+      "title": "遗忘与复习模型"
+    },
+    {
+      "error": "",
+      "paths": 12,
+      "route": "#psych/logistic",
+      "svg": true,
+      "title": "心理测量曲线"
+    }
+  ],
+  "offlineRoutes": [
+    {
+      "invalid": false,
+      "route": "#trig",
+      "svg": true,
+      "title": "单位圆与六种函数"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/graphs",
+      "svg": true,
+      "title": "六函数图像对照"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/sine",
+      "svg": true,
+      "title": "从 sin 出发"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/identities",
+      "svg": true,
+      "title": "恒等式的几何"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/inverse",
+      "svg": true,
+      "title": "六种反函数"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/compose",
+      "svg": true,
+      "title": "角度如何映射"
+    },
+    {
+      "invalid": false,
+      "route": "#trig/calculus",
+      "svg": true,
+      "title": "导数与切线"
+    }
+  ],
+  "additionalChecks": {
+    "negativeArcsecSlope": 0.2886751345948129,
+    "negativeArccscSlope": -0.2886751345948129,
+    "restoredSecAngle": 180,
+    "composition": "150° → 30°",
+    "animation": "angle advanced from 35 to 43 and paused",
+    "mobile": {
+      "viewportWidth": 390,
+      "documentWidth": 375,
+      "scrollWidth": 375,
+      "stackedDerivativePanels": true
+    },
+    "downloads": [
+      "高数课堂-trig-calculus.csv",
+      "高数课堂-trig-calculus.svg",
+      "三角函数学习说明.md"
+    ],
+    "consoleErrors": 0,
+    "offlinePreview": "single HTML served over HTTP",
+    "desktopViewport": [
+      1440,
+      960
+    ]
+  }
+}

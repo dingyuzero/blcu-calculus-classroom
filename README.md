@@ -1,7 +1,9 @@
 # 北京语言大学 Ding Lab · 高数课程资源系统
 
-用于心理学专业高等数学课堂的交互资源网站。六章、十八个演示，含函数、极限、微积分、泰勒展开与心理学数学模型。课程展示版，非学校官方平台。
+用于心理学专业高等数学课堂的交互资源网站。七章、二十五个演示，含六种三角函数及反函数、函数、极限、微积分、泰勒展开与心理学数学模型。
 
+- [三角函数板块](https://dingyuzero.github.io/blcu-calculus-classroom/#trig)
+- [三角函数学习说明](docs/三角函数学习说明.md)
 - [公开网站](https://dingyuzero.github.io/blcu-calculus-classroom/)
 - [单 HTML 离线版与交付包](https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest)
 - [使用说明书](docs/使用说明.md)
@@ -22,4 +24,4 @@ python -m http.server 8765 --bind 127.0.0.1 --directory dist
 
 访问 http://127.0.0.1:8765/ 。`dist/` 就是可发布的静态网站；构建单文件后，`release/高数课堂-单文件.html` 可拷贝到其他电脑使用。
 
-原创代码与文档使用 [MIT](LICENSE)，第三方许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。有限图形采样不是数学证明；心理学案例均为教学模型。
+原创代码与文档使用 [MIT](LICENSE)，第三方许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。心理学案例采用教学模型。

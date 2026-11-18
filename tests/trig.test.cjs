@@ -87,3 +87,27 @@ test("sampled graph branches never cross analytic poles", () => {
     }
   }
 });
+test("identity diagram keeps the unit square fixed while sin and cos areas change", () => {
+  const area = (points) =>
+    Math.abs(
+      points
+        .slice(0, -1)
+        .reduce(
+          (sum, p, i) =>
+            sum + p[0] * points[i + 1][1] - p[1] * points[i + 1][0],
+          0,
+        ),
+    ) / 2;
+  const fixed = T.unitIdentityGeometry(T.rad(30)).unitSquare;
+  for (const degrees of [0, 5, 30, 45, 60, 85, 90]) {
+    const angle = T.rad(degrees),
+      g = T.unitIdentityGeometry(angle);
+    assert.deepEqual(g.unitSquare, fixed);
+    near(area(g.unitSquare), 1);
+    near(area(g.cosSquare), Math.cos(angle) ** 2);
+    near(area(g.sinSquare), Math.sin(angle) ** 2);
+    near(Math.hypot(...g.pivot), Math.cos(angle));
+    near(Math.hypot(1 - g.pivot[0], g.pivot[1]), Math.sin(angle));
+    near(area(g.cosSquare) + area(g.sinSquare), 1);
+  }
+});

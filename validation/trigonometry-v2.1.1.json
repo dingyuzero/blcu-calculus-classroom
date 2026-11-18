@@ -1,0 +1,93 @@
+{
+  "version": "2.1.1",
+  "date": "2026-11-18",
+  "fixedUnitAtAngles": [
+    "5",
+    "30",
+    "60",
+    "85"
+  ],
+  "unitSquarePathFixed": true,
+  "otherIdentities": [
+    {
+      "kind": "sec",
+      "fixed": true
+    },
+    {
+      "kind": "csc",
+      "fixed": true
+    }
+  ],
+  "axisChoices": [
+    {
+      "detail": "六张图共用角度，纵轴均为 −1.2 到 1.2。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "1.2"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −2 到 2。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "2"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −3 到 3。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "3"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −4 到 4。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "4"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −5 到 5。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "5"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −6 到 6。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "6"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −10 到 10。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "10"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −20 到 20。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "20"
+    },
+    {
+      "detail": "六张图共用角度，纵轴均为 −50 到 50。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "50"
+    },
+    {
+      "detail": "六张图共用角度；sin/cos 纵轴为 ±1.2，其余为 ±5。",
+      "invalid": false,
+      "panels": 6,
+      "selection": "fit"
+    }
+  ],
+  "offline": {
+    "externalScripts": 0,
+    "restoredScale": 50
+  },
+  "mobile": {
+    "viewport": 390,
+    "noOverflow": true,
+    "controlsBeforePlot": true
+  },
+  "consoleErrors": 0
+}

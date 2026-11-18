@@ -91,7 +91,7 @@ const resources = [
     docs: "https://jsxgraph.org/",
     licenseUrl: "https://github.com/jsxgraph/jsxgraph/blob/main/LICENSE.MIT",
     desc: "面向浏览器的交互数学绘图库，支持函数、可拖动点、几何构造与动态图形。",
-    use: "课堂用途：割线逼近切线、黎曼矩形、函数图像。本站 18 个演示的图形引擎。",
+    use: "课堂用途：割线逼近切线、黎曼矩形、函数图像。本站交互演示的图形引擎。",
     tags: ["JavaScript", "浏览器运行", "可离线"],
     local: "vendor/JSXGraph-LICENSE.txt",
   },
@@ -362,9 +362,10 @@ function miniGraph(id, hero = false) {
 function home() {
   $("#main").innerHTML =
     `<section class="hero"><div class="hero-text"><div class="eyebrow">A LITTLE EXPLORATION. A DEEPER UNDERSTANDING.</div><h1>让抽象的数学，<br>变得<em>直观。</em></h1><p>从函数的一条曲线，到理解心理学的一种方式。<br>在观察、操作与讨论中，发现高等数学的意义。</p><a class="button primary" href="#function">开始探索 <span>↗</span></a> <a class="button" href="#guide">课堂使用指南</a></div><div class="hero-art">${miniGraph("taylor", true)}<span class="hero-formula">f(x) ≈ ∑ aₙ(x − a)ⁿ</span><span class="hero-tag">用多项式，一步步接近真实</span></div></section>
- <div class="intro-strip"><span><strong>06</strong>课程章节</span><span><strong>18</strong>交互演示</span><span><strong>07</strong>开源项目</span><span class="strip-note">无需安装 · 即开即用 · 支持课堂投影</span></div>
+ <div class="intro-strip"><span><strong>07</strong>课程章节</span><span><strong>25</strong>交互演示</span><span><strong>07</strong>开源项目</span><span class="strip-note">无需安装 · 即开即用 · 支持课堂投影</span></div>
+ <section class="trig-home-banner"><div><span class="eyebrow">TRIGONOMETRY</span><h2>从一个角，认识六种三角函数</h2><p>单位圆、同步曲线、反函数与切线：把 sin、cos、tan、cot、sec、csc 连起来。</p></div><a class="button primary" href="#trig">进入三角函数板块 ↗</a></section>
  <div class="section-heading"><div><h2>把数学，放进实验室</h2><p>选择一个主题，调整参数，让理解在变化中发生。</p></div><span class="text-link">按课程进度自由探索 ↓</span></div>
- <div class="lab-grid">${topics.map((t, i) => `<a class="lab-card" href="#${t.id}"><div class="card-art"><span class="card-index">LAB / 0${i + 1}</span><span class="card-chip">${t.time}</span>${miniGraph(t.id)}</div><div class="card-body"><h3>${t.title}</h3><p>${chapterModules[t.id].map((m) => m.title).join(" · ")}</p><div class="card-bottom"><span>3 个演示 · 参数分别保存</span><span>进入实验 ↗</span></div></div></a>`).join("")}</div>
+ <div class="lab-grid">${topics.map((t, i) => `<a class="lab-card" href="#${t.id}"><div class="card-art"><span class="card-index">LAB / 0${i + 1}</span><span class="card-chip">${t.time}</span>${miniGraph(t.id)}</div><div class="card-body"><h3>${t.title}</h3><p>${chapterModules[t.id].map((m) => m.title).join(" · ")}</p><div class="card-bottom"><span>${chapterModules[t.id].length} 个演示 · 参数分别保存</span><span>进入实验 ↗</span></div></div></a>`).join("")}</div>
  <div class="section-heading"><div><h2>一节课，从一个好问题开始</h2><p>建议演示路线 · 约 25 分钟</p></div></div><section class="class-path"><div class="path-icon">′</div><div class="path-copy"><h3>学习越久，进步一定越快吗？</h3><p>从函数形状出发，走向变化率，再回到学习曲线。</p></div><div class="path-steps"><span>函数图像</span>→<span>导数</span>→<span>学习曲线</span></div><a class="button" href="#guide">查看课堂路线 ↗</a></section>`;
 }
 function head(title, en, subtitle, action = "") {
@@ -1597,7 +1598,7 @@ function guide() {
   const downloads = document.createElement("section");
   downloads.className = "document-downloads";
   downloads.innerHTML =
-    '<div><h2>把说明带到课堂</h2><p>版本 2.0.1 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
+    '<div><h2>把说明带到课堂</h2><p>版本 2.1.0 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
   $("#main").append(downloads);
   $$("[data-example]").forEach((button) => {
     button.onclick = () => {
@@ -1614,6 +1615,7 @@ function setPresentation(on) {
   $("#present").setAttribute("aria-pressed", on);
   requestAnimationFrame(() => {
     const plot = $("#plot");
+    if (current === "trig" && renderPlot) renderPlot();
     if (board && plot)
       board.resizeContainer(plot.clientWidth, plot.clientHeight, true);
   });
@@ -1658,6 +1660,7 @@ function route(reset = false) {
           resources: resourcePage,
           guide,
           function: functionLab,
+          trig: trigCircle,
           limit: limitLab,
           derivative: derivativeLab,
           integral: integralLab,
@@ -1716,8 +1719,16 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 window.addEventListener("beforeunload", saveControls);
+installTrig();
 window.addEventListener("hashchange", () => route());
 if (!window.JXG || !window.math || !window.Calc || !window.ClassroomPlot) {
   $("#main").innerHTML =
     '<div class="notice">数学组件未能加载。请确认 vendor 文件夹与 index.html 保持在一起，并刷新页面。</div>';
 } else route();
+
+let trigResizeFrame;
+window.addEventListener("resize", () => {
+  if (current !== "trig" || !renderPlot) return;
+  cancelAnimationFrame(trigResizeFrame);
+  trigResizeFrame = requestAnimationFrame(() => renderPlot && renderPlot());
+});

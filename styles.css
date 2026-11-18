@@ -1839,3 +1839,8 @@ input[type="range"] {
 
 @media(max-width:1200px){.chapter-tabs:has(a[href^="#trig"]){grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.chapter-tabs:has(a[href^="#trig"]){grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}.chapter-tabs:has(a[href^="#trig"]) a{padding:9px;font-size:12px}}
+
+.trig-graph-legend span:first-child::before{background:linear-gradient(90deg,#7454bd,#d88d51,#389c96,#b65d85,#497bad,#7b8b3d)}
+.trig-graph-legend span:nth-child(2)::before{background:#b2a4c9}
+.trig-graph-legend span:nth-child(3)::before{background:#8998ab}
+@media(max-width:1000px){.lab-layout:has(.trig-graph-legend) .control-panel{order:-1}}

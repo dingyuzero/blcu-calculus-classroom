@@ -163,6 +163,24 @@
         ? { parts: [1, v.tan * v.tan], total: v.sec * v.sec }
         : { parts: [1, v.cot * v.cot], total: v.csc * v.csc };
   }
+  function unitIdentityGeometry(theta) {
+    const [s, c] = sincos(theta),
+      a = [0, 0],
+      b = [1, 0],
+      p = [c * c, s * c];
+    const square = (u, v) => {
+      const dx = v[0] - u[0],
+        dy = v[1] - u[1];
+      return [u, v, [v[0] - dy, v[1] + dx], [u[0] - dy, u[1] + dx], u];
+    };
+    return {
+      triangle: [a, p, b, a],
+      pivot: p,
+      cosSquare: square(a, p),
+      sinSquare: square(p, b),
+      unitSquare: square(b, a),
+    };
+  }
   return {
     pi,
     rad,
@@ -179,5 +197,6 @@
     angleBounds,
     fromSine,
     identity,
+    unitIdentityGeometry,
   };
 });

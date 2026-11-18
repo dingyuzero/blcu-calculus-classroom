@@ -301,10 +301,18 @@ function trigDrawing(W, H) {
     },
   };
 }
-function trigCurve(frame, key, lo, hi, color = trigInfo[key].color) {
+function trigCurve(
+  frame,
+  key,
+  lo,
+  hi,
+  color = trigInfo[key].color,
+  bottom = -10,
+  top = 10,
+) {
   Trig.branches(key, lo, hi).forEach((p) => frame.path(p, color));
   Trig.poles(key, lo, hi).forEach((x) =>
-    frame.line([x, -10], [x, 10], "#b2a4c9", "4 5", 1),
+    frame.line([x, bottom], [x, top], "#b2a4c9", "4 5", 1),
   );
 }
 function trigSeries(f, lo, hi, n = 300) {
@@ -344,10 +352,14 @@ function trigPiGrid(d, f, lo, hi, bottom, top) {
                   : `${k}π/2`;
     d.text(f.X(x), f.Y(bottom) + 20, label, "#687589", 13, "middle");
   }
-  for (let k = Math.ceil(bottom); k <= top; k++) {
-    f.line([lo, k], [hi, k], k === 0 ? "#a6b0c0" : "#edf0f5");
+  const step = [0.2, 0.5, 1, 2, 5, 10, 20, 50].find(
+    (s) => (top - bottom) / s <= 6,
+  );
+  for (let k = Math.ceil(bottom / step); k <= Math.floor(top / step); k++) {
+    const value = k * step;
+    f.line([lo, value], [hi, value], k === 0 ? "#a6b0c0" : "#edf0f5");
     if (k !== 0)
-      d.text(f.X(lo) - 6, f.Y(k) + 4, String(k), "#798390", 12, "end");
+      d.text(f.X(lo) - 6, f.Y(value) + 4, fmt(value, 2), "#798390", 12, "end");
   }
 }
 function trigCircle() {
@@ -460,12 +472,14 @@ function trigGraphs() {
   trigSetup(
     trigAngle(30, -360, 360) +
       range("cycles", "横轴半宽（π 的倍数）", 2, 1, 3) +
-      range("height", "纵轴半高", 3, 2, 6),
-    [
-      "每张图使用对应函数的颜色",
-      "竖虚线：渐近线",
-      "圆点：当前角度对应的函数值",
-    ],
+      select("height", "纵轴范围", [
+        ["fit", "按函数适配：sin/cos ±1.2，其余 ±5"],
+        ...[1.2, 2, 3, 4, 5, 6, 10, 20, 50].map((h) => [
+          String(h),
+          `−${h} 到 ${h}`,
+        ]),
+      ]).replace('value="3"', 'value="3" selected'),
+    ["每张图使用对应函数的颜色", "紫灰虚线：渐近线", "深灰虚线：当前观察角度"],
     [
       "先比较 sin 与 cos 的形状和相位。",
       "观察 tan 与 cot 每隔 π 重复。",
@@ -474,15 +488,22 @@ function trigGraphs() {
     "sec 和 csc 为什么总在 y≥1 或 y≤−1 的区域？",
     "单位圆上 |sin θ|、|cos θ| 都不超过 1，因此它们非零时对应的 1/sin θ、1/cos θ 的绝对值至少是 1。它们在 sin 或 cos 为零的角度出现竖直渐近线。",
   );
+  $(".legend").classList.add("trig-graph-legend");
   trigBind(() => {
     const theta = Trig.rad(num("theta")),
       lo = -num("cycles") * Math.PI,
       hi = -lo,
-      h = num("height"),
+      scale = $("#height").value,
       cols = $("#plot").clientWidth < 520 ? 1 : 2,
       d = trigDrawing(cols * 390 + 20, Math.ceil(6 / cols) * 225 + 20);
     Trig.keys.forEach((k, i) => {
-      const x = 45 + (i % cols) * 390,
+      const h =
+          scale === "fit"
+            ? ["sin", "cos"].includes(k)
+              ? 1.2
+              : 5
+            : Number(scale),
+        x = 45 + (i % cols) * 390,
         y = 40 + Math.floor(i / cols) * 225,
         f = d.frame(
           x,
@@ -497,14 +518,16 @@ function trigGraphs() {
           false,
         );
       trigPiGrid(d, f, lo, hi, -h, h);
-      trigCurve(f, k, lo, hi);
+      trigCurve(f, k, lo, hi, trigInfo[k].color, -h, h);
       f.line([theta, -h], [theta, h], "#8998ab", "3 3");
       f.point(theta, Trig.value(k, theta), trigInfo[k].color);
     });
     d.finish();
     values(
       `θ = ${num("theta")}°`,
-      "六张图共用角度和坐标范围。拖动角度可逐一比较。",
+      scale === "fit"
+        ? "六张图共用角度；sin/cos 纵轴为 ±1.2，其余为 ±5。"
+        : `六张图共用角度，纵轴均为 −${scale} 到 ${scale}。`,
     );
     trigConclusion(
       "sin、cos、sec、csc 的周期是 2π；tan、cot 的周期是 π。",
@@ -595,7 +618,14 @@ function trigIdentities() {
       ["circle", "sin² θ + cos² θ = 1"],
       ["sec", "1 + tan² θ = sec² θ"],
       ["csc", "1 + cot² θ = csc² θ"],
-    ]) + range("theta", "锐角 θ（度）", 35, 5, 85, 1),
+    ]) +
+      range("theta", "锐角 θ（度）", 35, 5, 85, 1) +
+      select("identity-view", "视野大小", [
+        ["2", "标准"],
+        ["1", "近景"],
+        ["4", "宽视野"],
+        ["8", "全景"],
+      ]),
     [
       "紫、橙：两条直角边上的正方形",
       "青：斜边上的正方形",
@@ -603,99 +633,157 @@ function trigIdentities() {
     ],
     [
       "观察直角三角形三条边对应的函数。",
-      "改变角度，比较三个正方形的面积。",
+      "固定单位边与面积为 1 的正方形，改变角度，观察另外两块面积。",
       "切换恒等式，比较单位圆关系除以 cos² 或 sin² 后的结果。",
     ],
     "三组恒等式为什么都来自勾股定理？",
     "sin² θ+cos² θ=1 来自半径为 1 的直角三角形。等式两边除以 cos² θ 得到 1+tan² θ=sec² θ；除以 sin² θ 得到 1+cot² θ=csc² θ。",
   );
+  const setViewControl = () => {
+    $("#identity-view").closest(".field").hidden =
+      $("#identity").value === "circle";
+  };
+  $("#identity").addEventListener("change", setViewControl);
+  setViewControl();
   trigBind(() => {
     const theta = Trig.rad(num("theta")),
       kind = $("#identity").value,
       v = Trig.all(theta),
       a = kind === "circle" ? v.cos : 1,
       b = kind === "circle" ? v.sin : kind === "sec" ? v.tan : v.cot,
-      h = Math.hypot(a, b),
+      h = kind === "circle" ? 1 : Math.hypot(a, b),
       names =
         kind === "circle"
           ? ["cos θ", "sin θ", "1"]
           : kind === "sec"
             ? ["1", "tan θ", "sec θ"]
             : ["1", "cot θ", "csc θ"],
-      n = Math.max(a, b),
+      n = num("identity-view"),
       d = trigDrawing(620, 570),
       f = d.frame(
         130,
         45,
         360,
         360,
-        -1.25 * n,
-        2.25 * n,
-        -1.25 * n,
-        2.25 * n,
-        "三边上的正方形",
+        kind === "circle" ? -0.75 : -1.25 * n,
+        kind === "circle" ? 1.75 : 2.25 * n,
+        kind === "circle" ? -1.15 : -1.25 * n,
+        kind === "circle" ? 1.35 : 2.25 * n,
+        kind === "circle"
+          ? "斜边与单位正方形固定"
+          : "单位边固定，改变另外两条边",
         false,
       );
-    f.path(
-      [
-        [0, 0],
-        [a, 0],
-        [a, b],
-        [0, 0],
-      ],
-      "#42536b",
-      2,
-    );
-    f.path(
-      [
-        [0, 0],
-        [0, -a],
-        [a, -a],
-        [a, 0],
-        [0, 0],
-      ],
-      purple,
-      2,
-      "",
-      "#ede7fa",
-    );
-    f.path(
-      [
-        [a, 0],
-        [a + b, 0],
-        [a + b, b],
-        [a, b],
-        [a, 0],
-      ],
-      orange,
-      2,
-      "",
-      "#fff0df",
-    );
-    f.path(
-      [
-        [0, 0],
-        [-b, a],
-        [a - b, a + b],
-        [a, b],
-        [0, 0],
-      ],
-      teal,
-      2,
-      "",
-      "#e0f4ee",
-    );
-    const squareName = (name) =>
-      name === "1" ? "1" : name.replace(" θ", "² θ");
-    f.label(a * 0.2, -a * 0.4, squareName(names[0]), purple, 17);
-    f.label(a + b * 0.12, b * 0.48, squareName(names[1]), orange, 17);
-    f.label((a - b) * 0.45, (a + b) * 0.6, squareName(names[2]), teal, 17);
+    if (kind === "circle") {
+      const geometry = Trig.unitIdentityGeometry(theta);
+      f.path(geometry.cosSquare, purple, 2, "", "#ede7fa");
+      f.path(geometry.sinSquare, orange, 2, "", "#fff0df");
+      f.path(geometry.unitSquare, teal, 2, "", "#e0f4ee");
+      f.path(geometry.triangle, "#42536b", 2.5);
+      const center = (points) =>
+        [0, 1].map(
+          (axis) => points.slice(0, 4).reduce((sum, p) => sum + p[axis], 0) / 4,
+        );
+      const [cx, cy] = center(geometry.cosSquare),
+        [sx, sy] = center(geometry.sinSquare);
+      d.text(f.X(cx), f.Y(cy) + 5, "cos² θ", purple, 17, "middle");
+      d.text(f.X(sx), f.Y(sy) + 5, "sin² θ", orange, 17, "middle");
+      d.text(f.X(0.5), f.Y(-0.5), "1（固定）", teal, 20, "middle");
+      f.point(...geometry.pivot, purple);
+      f.path(
+        Array.from({ length: 25 }, (_, i) => [
+          0.15 * Math.cos((theta * i) / 24),
+          0.15 * Math.sin((theta * i) / 24),
+        ]),
+        purple,
+        1.5,
+      );
+      f.label(
+        0.23 * Math.cos(theta / 2),
+        0.23 * Math.sin(theta / 2),
+        "θ",
+        purple,
+        15,
+      );
+      // The right angle follows the moving vertex on the fixed-diameter semicircle.
+      const p = geometry.pivot,
+        u = [-v.cos, -v.sin],
+        w = [v.sin, -v.cos],
+        r = 0.045;
+      f.path(
+        [
+          [p[0] + r * u[0], p[1] + r * u[1]],
+          [p[0] + r * (u[0] + w[0]), p[1] + r * (u[1] + w[1])],
+          [p[0] + r * w[0], p[1] + r * w[1]],
+        ],
+        "#768294",
+        1.2,
+      );
+    } else {
+      f.path(
+        [
+          [0, 0],
+          [a, 0],
+          [a, b],
+          [0, 0],
+        ],
+        "#42536b",
+        2,
+      );
+      f.path(
+        [
+          [0, 0],
+          [0, -a],
+          [a, -a],
+          [a, 0],
+          [0, 0],
+        ],
+        purple,
+        2,
+        "",
+        "#ede7fa",
+      );
+      f.path(
+        [
+          [a, 0],
+          [a + b, 0],
+          [a + b, b],
+          [a, b],
+          [a, 0],
+        ],
+        orange,
+        2,
+        "",
+        "#fff0df",
+      );
+      f.path(
+        [
+          [0, 0],
+          [-b, a],
+          [a - b, a + b],
+          [a, b],
+          [0, 0],
+        ],
+        teal,
+        2,
+        "",
+        "#e0f4ee",
+      );
+      const squareName = (name) =>
+        name === "1" ? "1" : name.replace(" θ", "² θ");
+      f.label(a * 0.2, -a * 0.4, squareName(names[0]), purple, 17);
+      f.label(a + b * 0.12, b * 0.48, squareName(names[1]), orange, 17);
+      f.label((a - b) * 0.45, (a + b) * 0.6, squareName(names[2]), teal, 17);
+    }
     const total = h * h,
-      left = ((a * a) / total) * 500;
+      left = ((a * a) / total) * 500,
+      squaredNames = names.map((name) =>
+        name === "1" ? "1" : name.replace(" θ", "² θ"),
+      );
     d.text(
       60,
       444,
-      `${names[0]}² + ${names[1]}² = ${names[2]}²`,
+      `${squaredNames[0]} + ${squaredNames[1]} = ${squaredNames[2]}`,
       "#38415b",
       19,
     );
@@ -720,11 +808,13 @@ function trigIdentities() {
     trigConclusion(
       formula,
       kind === "circle"
-        ? "单位圆中，半径是斜边，长度为 1。"
+        ? "斜边长度始终为 1；青色正方形的位置、方向和面积保持不变。sin、cos 对应的两条直角边随 θ 改变。"
         : kind === "sec"
           ? "由 sin² θ+cos² θ=1 两边除以 cos² θ 得到。"
           : "由 sin² θ+cos² θ=1 两边除以 sin² θ 得到。",
-      "正方形面积与对应边长的平方相同；下方条形按总面积归一化。",
+      kind === "circle"
+        ? "固定坐标比例：紫色 cos² θ 与橙色 sin² θ 的面积之和始终为 1。"
+        : "单位边与坐标比例固定；用视野大小查看较大的正方形。下方面积条按总面积归一化。",
       ["边", "长度", "正方形面积"],
       [
         [names[0], a, a * a],

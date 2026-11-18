@@ -1598,7 +1598,7 @@ function guide() {
   const downloads = document.createElement("section");
   downloads.className = "document-downloads";
   downloads.innerHTML =
-    '<div><h2>把说明带到课堂</h2><p>版本 2.1.0 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
+    '<div><h2>把说明带到课堂</h2><p>版本 2.1.1 · Markdown 文档可离线保存、编辑和交接。</p></div><a class="button" href="docs/使用说明.md" download="高数网站-使用说明书.md">下载使用说明书 ↓</a><a class="button" href="docs/开发交接.md" download="高数网站-开发交接文档.md">下载开发交接文档 ↓</a><a class="button" href="docs/公开与离线部署.md" download>公开与离线部署指南 ↓</a><a class="button" href="https://github.com/dingyuzero/blcu-calculus-classroom/releases/latest" target="_blank" rel="noopener">单文件版下载 ↗</a>';
   $("#main").append(downloads);
   $$("[data-example]").forEach((button) => {
     button.onclick = () => {
